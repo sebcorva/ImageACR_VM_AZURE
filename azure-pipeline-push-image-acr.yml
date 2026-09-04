@@ -7,7 +7,7 @@ variables:
   # Variables de entorno
   ACR_NAME: 'myAppG5' # Colocar el nombre de tu ACR
   IMAGE_NAME: 'myapp-nginx-s4' # Colocar el Nombre de Imagen
-  SERVICE_CONNECTION_NAME: 'myapps-devops-s4' # Colocar nombre del Service Connection ubicado en Docker Registry-- Azure Container Registry
+  SERVICE_CONNECTION_NAME: 'DevOps-s4' # Colocar nombre del Service Connection ubicado en Docker Registry-- Azure Container Registry
 
 jobs:
   - job: BuildAndPush
