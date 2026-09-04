@@ -71,12 +71,15 @@ stages:
 
                     # Verificar si el contenedor ya está en ejecución
                     if sudo docker ps -a --format '{{.Names}}' | grep -Eq "^nginx_container\$"; then
-                      echo "El contenedor 'nginx_container' ya existe. Iniciándolo nuevamente..."
-                      sudo docker start nginx_container
+                      echo "El contenedor 'nginx_container' ya existe. Deteniéndolo y reemplazándolo por la nueva versión..."
+                      sudo docker stop nginx_container
+                      sudo docker rm nginx_container
                     else
-                      echo "El contenedor 'nginx_container' no existe. Creándolo y ejecutándolo..."
-                      sudo docker run -d -p 80:80 --name nginx_container ${ACR_NAME}.azurecr.io/${ACR_NAME}.azurecr.io/${IMAGE_NAME}:latest
+                      echo "El contenedor 'nginx_container' no existe. Creándolo por primera vez..."
                     fi
+
+                    # Se ejecuta en ambos casos
+                    sudo docker run -d -p 80:80 --name nginx_container ${ACR_NAME}.azurecr.io/${IMAGE_NAME}:latest
 
                     sudo docker ps
                   displayName: 'Descargar y ejecutar la imagen Nginx desde ACR'
