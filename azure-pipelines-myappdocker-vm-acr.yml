@@ -34,7 +34,7 @@ stages:
                       echo "Azure CLI ya está instalado."
                     fi
                   displayName: 'Verificar e Instalar Azure CLI'
-                  failOnStderr: false
+                  failOnStderr: true
 
                 - script: |
                     # Verificar e instalar Docker en la máquina virtual
@@ -59,7 +59,7 @@ stages:
                       echo "Docker ya está instalado."
                     fi
                   displayName: 'Verificar e Instalar Docker'
-                  failOnStderr: false
+                  failOnStderr: true
 
                 - script: |
                     # Autenticarse en Azure Container Registry utilizando nombre de usuario y contraseña
@@ -83,7 +83,7 @@ stages:
 
                     sudo docker ps
                   displayName: 'Descargar y ejecutar la imagen Nginx desde ACR'
-                  failOnStderr: false
+                  failOnStderr: true
 
                 - script: |
                     # Mostrar la URL para acceder a Nginx
